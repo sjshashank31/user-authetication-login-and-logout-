@@ -1,0 +1,39 @@
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Login</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body class="container mt-5">
+<nav class="nav-bar">
+<ul>
+    {% if user.is_authenticated %}
+    <li class="nav-item ">
+        <a class="btn btn-outline-warning " href="{% url 'home:profile' %}">{{ user.get_username }}</a>
+      </li>
+        <li class="nav-item ">
+        <a class="btn btn-outline-primary" href="{% url 'account_logout' %}">Logout</a>
+      </li>
+    {% else %}
+
+<li class="nav-item">
+        <a class="btn btn-outline-warning" href="{% url 'account_signup' %}">Signup</a>
+      </li>
+        <li class="nav-item">
+        <a class="btn btn-outline-primary" href="{% url 'account_login' %}">Login</a>
+      </li>
+    {% endif %}
+
+</ul>
+</nav>
+</body>
+</html>
